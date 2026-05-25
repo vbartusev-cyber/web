@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rand Water – Solar Energy Project Budget</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #f0f8ff;
+  --surface:     rgba(255,255,255,0.72);
+  --surface-hi:  rgba(255,255,255,0.92);
+  --glass:       rgba(255,255,255,0.55);
+  --aqua:        #0ea5c9;
+  --aqua-mid:    #38bdf8;
+  --aqua-soft:   rgba(14,165,201,0.10);
+  --aqua-border: rgba(14,165,201,0.22);
+  --teal:        #0d9488;
+  --teal-soft:   rgba(13,148,136,0.10);
+  --sky:         #e0f2fe;
+  --text:        #0f2a3a;
+  --text-mid:    #4b7a8e;
+  --text-lo:     #8ab4c4;
+  --border:      rgba(14,165,201,0.14);
+  --shadow:      0 2px 16px rgba(14,165,201,0.10);
+  --shadow-hi:   0 4px 24px rgba(14,165,201,0.18);
+  --r:           12px;
+  --r-sm:        7px;
+}
+
+body {
+  background: linear-gradient(145deg, #e8f5fd 0%, #f0fafe 40%, #e6f6f8 100%);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 32px 24px 56px;
+  min-width: 320px;
+}
+
+/* subtle grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(14,165,201,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,165,201,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── SOURCE BANNER ── */
+.source-banner {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(14,165,201,0.08) 0%, rgba(13,148,136,0.06) 100%);
+  border: 1px solid var(--aqua-border);
+  border-radius: var(--r-sm);
+  padding: 10px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.source-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-lo);
+  font-weight: 500;
+}
+.source-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--aqua);
+  text-decoration: none;
+  border-bottom: 1px solid var(--aqua);
+  transition: color 0.2s;
+}
+.source-link:hover {
+  color: var(--aqua-mid);
+  border-bottom-color: var(--aqua-mid);
+}
+
+/* ── HEADER ── */
+.header {
+  position: relative;
+  z-index: 1;
+  background: var(--surface-hi);
+  border: 1px solid var(--aqua-border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 28px 32px 24px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aqua) 0%, var(--aqua-mid) 50%, #7dd3fc 100%);
+}
+.header-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.header-eye {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--aqua);
+  margin-bottom: 8px;
+}
+.header h1 {
+  font-size: clamp(17px, 2.6vw, 22px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+.header-sub {
+  font-size: 13px;
+  color: var(--text-mid);
+  font-weight: 400;
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--text-mid);
+  background: var(--aqua-soft);
+  border: 1px solid var(--aqua-border);
+  border-radius: 100px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.chip b { color: var(--aqua); font-weight: 500; }
+
+/* ── CARDS ── */
+.cards {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.card {
+  background: var(--surface-hi);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px 18px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-hi); transform: translateY(-1px); }
+.card-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--c, var(--aqua));
+  border-radius: var(--r) var(--r) 0 0;
+}
+.card-blob {
+  position: absolute;
+  bottom: -24px; right: -24px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--c, var(--aqua));
+  opacity: 0.06;
+  pointer-events: none;
+}
+.card-lbl {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.card-zar {
+  font-size: clamp(16px, 2.4vw, 20px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.card-eur {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--c, var(--aqua));
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.card-note { font-size: 11.5px; color: var(--text-mid); line-height: 1.4; }
+
+/* ── PHASE SUMMARY ── */
+.phase-row {
+  position: relative; z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.ph-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--surface-hi);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 7px 12px;
+  font-size: 12px;
+  transition: box-shadow 0.2s;
+  cursor: default;
+}
+.ph-pill:hover { box-shadow: var(--shadow); }
+.ph-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.ph-name { color: var(--text-mid); font-weight: 400; }
+.ph-val { color: var(--text); font-weight: 600; margin-left: 2px; }
+.ph-eur { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-lo); margin-left: 2px; }
+
+/* ── TABLE CONTAINER ── */
+.tbl-wrap {
+  position: relative; z-index: 1;
+  background: var(--surface-hi);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.tbl-head-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tbl-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.tbl-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--aqua);
+  background: var(--aqua-soft);
+  border: 1px solid var(--aqua-border);
+  border-radius: 100px;
+  padding: 2px 9px;
+  letter-spacing: 0.05em;
+}
+.tbl-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 780px; }
+
+/* thead */
+thead th {
+  padding: 11px 14px;
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  font-weight: 500;
+  background: rgba(224,242,254,0.5);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+thead th.r { text-align: right; }
+
+/* phase group */
+tr.ph-row td {
+  padding: 9px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border);
+  color: var(--c, var(--aqua));
+  background: var(--bg-c, var(--aqua-soft));
+}
+tr.ph-row td:first-child { padding-left: 14px; }
+
+/* sub group */
+tr.sg td {
+  padding: 7px 14px 7px 26px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-mid);
+  background: rgba(240,248,255,0.6);
+  border-top: 1px solid rgba(14,165,201,0.06);
+  letter-spacing: 0.02em;
+}
+
+/* data rows */
+tr.dr td {
+  padding: 10px 14px 10px 32px;
+  border-bottom: 1px solid rgba(14,165,201,0.06);
+  vertical-align: top;
+  color: var(--text);
+  font-size: 13px;
+}
+tr.dr:last-of-type td { border-bottom: none; }
+tr.dr:hover td { background: rgba(224,242,254,0.45); }
+td.wbs {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-lo);
+  white-space: nowrap;
+  padding-left: 14px !important;
+  width: 50px;
+}
+td.task { min-width: 190px; }
+td.zar {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  font-weight: 500;
+}
+td.eur {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-lo);
+  white-space: nowrap;
+}
+td.tl { font-size: 12px; color: var(--text-mid); white-space: nowrap; }
+td.sh { font-size: 12px; color: var(--text-mid); min-width: 170px; }
+
+/* badges */
+.b {
+  display: inline-block;
+  font-size: 9.5px;
+  font-family: 'JetBrains Mono', monospace;
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-right: 4px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.b-aq  { background: rgba(14,165,201,0.1);  color: #0369a1; border: 1px solid rgba(14,165,201,0.2); }
+.b-tl  { background: rgba(13,148,136,0.1);  color: #0f766e; border: 1px solid rgba(13,148,136,0.2); }
+.b-sky { background: rgba(56,189,248,0.12); color: #0284c7; border: 1px solid rgba(56,189,248,0.2); }
+.b-sl  { background: rgba(100,116,139,0.1); color: #475569; border: 1px solid rgba(100,116,139,0.2); }
+
+/* subtotals */
+tr.st td {
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-mid);
+  background: rgba(224,242,254,0.35);
+  border-top: 1px solid var(--border);
+}
+tr.st td.r { text-align: right; }
+tr.st strong { color: var(--text); }
+
+/* grand total */
+tr.gt td {
+  padding: 14px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  background: linear-gradient(90deg, rgba(14,165,201,0.08) 0%, rgba(56,189,248,0.05) 100%);
+  border-top: 2px solid var(--aqua);
+}
+tr.gt td.r { text-align: right; color: var(--aqua); }
+tr.gt td.er { text-align: right; color: var(--teal); font-size: 13px; }
+
+/* value highlight tiers */
+.hi  { color: #0369a1 !important; font-weight: 600 !important; }
+.mid { color: #0f766e !important; }
+
+/* footer */
+.footer {
+  position: relative; z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text-lo);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.footer a { color: var(--aqua); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  body { padding: 16px 12px 40px; }
+}
+@media (max-width: 360px) {
+  .cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SOURCE BANNER -->
+<div class="source-banner">
+  <span class="source-label">📊 Source Document</span>
+  <a href="https://ktuedu-my.sharepoint.com/:x:/g/personal/vytbar4_ktu_lt/IQCWe7n88NY2RYlE9u0fPDYOAfRX2cXp9wOSRhTEi6G7vsQ?e=Ylb7mV" target="_blank" rel="noopener" class="source-link">View Original Budget</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <div class="header-eye">Rand Water · Floating Solar Energy Project</div>
+      <h1>Securing Critical Water Infrastructure<br>via Reliable, Independent Power Networks</h1>
+      <div class="header-sub">Vanderkloof Dam &amp; Gauteng Reservoirs — Full Capital Budget</div>
+      <div class="meta-row">
+        <div class="chip">Start <b>Jan 2027</b></div>
+        <div class="chip">End <b>Apr 2028</b></div>
+        <div class="chip">Duration <b>70 weeks</b></div>
+        <div class="chip">Rate <b>1 EUR = R 20.50</b></div>
+        <div class="chip">Capacity <b>1 MW</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div class="cards">
+  <div class="card" style="--c:#0ea5c9">
+    <div class="card-accent"></div>
+    <div class="card-blob"></div>
+    <div class="card-lbl">Grand Total CAPEX</div>
+    <div class="card-zar">R 32,887,360</div>
+    <div class="card-eur">≈ EUR 1,604,261</div>
+    <div class="card-note">All phases incl. 10% contingency &amp; senior PM</div>
+  </div>
+  <div class="card" style="--c:#0d9488">
+    <div class="card-accent"></div>
+    <div class="card-blob"></div>
+    <div class="card-lbl">Phase 1 — Regulatory</div>
+    <div class="card-zar">R 2,504,680</div>
+    <div class="card-eur">≈ EUR 122,180</div>
+    <div class="card-note">EIA, Water Use Licensing, NERSA &amp; Grid compliance</div>
+  </div>
+  <div class="card" style="--c:#0284c7">
+    <div class="card-accent"></div>
+    <div class="card-blob"></div>
+    <div class="card-lbl">Phase 3 — Solar &amp; BESS</div>
+    <div class="card-zar">R 20,804,460</div>
+    <div class="card-eur">≈ EUR 1,014,852</div>
+    <div class="card-note">Floating PV arrays, inverters, BESS container units</div>
+  </div>
+  <div class="card" style="--c:#38bdf8">
+    <div class="card-accent"></div>
+    <div class="card-blob"></div>
+    <div class="card-lbl">Contingency &amp; PM</div>
+    <div class="card-zar">R 5,384,760</div>
+    <div class="card-eur">≈ EUR 262,671</div>
+    <div class="card-note">10% risk reserve + 70-week senior project management</div>
+  </div>
+</div>
+
+<!-- PHASE PILLS -->
+<div class="phase-row">
+  <div class="ph-pill"><div class="ph-dot" style="background:#0d9488"></div><span class="ph-name">Phase 1</span><span class="ph-val">R 2,504,680</span><span class="ph-eur">/ EUR 122,180</span></div>
+  <div class="ph-pill"><div class="ph-dot" style="background:#0ea5c9"></div><span class="ph-name">Phase 2</span><span class="ph-val">R 1,409,820</span><span class="ph-eur">/ EUR 68,772</span></div>
+  <div class="ph-pill"><div class="ph-dot" style="background:#0284c7"></div><span class="ph-name">Phase 3</span><span class="ph-val">R 20,804,460</span><span class="ph-eur">/ EUR 1,014,852</span></div>
+  <div class="ph-pill"><div class="ph-dot" style="background:#38bdf8"></div><span class="ph-name">Phase 4</span><span class="ph-val">R 2,783,640</span><span class="ph-eur">/ EUR 135,787</span></div>
+  <div class="ph-pill"><div class="ph-dot" style="background:#94a3b8"></div><span class="ph-name">PM + Contingency</span><span class="ph-val">R 5,384,760</span><span class="ph-eur">/ EUR 262,671</span></div>
+</div>
+
+<!-- TABLE -->
+<div class="tbl-wrap">
+  <div class="tbl-head-bar">
+    <span class="tbl-title">Detailed Budget Breakdown</span>
+    <span class="tbl-count">47 LINE ITEMS · ZAR + EUR</span>
+  </div>
+  <div class="tbl-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>WBS</th>
+        <th>Infrastructure Asset / Deliverable</th>
+        <th class="r">ZAR</th>
+        <th class="r">EUR</th>
+        <th>Timeline</th>
+        <th>Primary Stakeholder</th>
+      </tr>
+    </thead>
+    <tbody>
+
+<!-- ── PHASE 1 ── -->
+<tr class="ph-row" style="--c:#0d9488;--bg-c:rgba(13,148,136,0.07)">
+  <td colspan="6">Phase 1 — Regulatory Compliance &amp; Permitting</td>
+</tr>
+<tr class="sg"><td colspan="6">1.1 &nbsp; Environmental Authorization</td></tr>
+<tr class="dr"><td class="wbs">1.1.1</td><td class="task"><span class="b b-tl">EIA</span>Environmental impact documentation</td><td class="zar">R 551,800</td><td class="eur">€ 26,917</td><td class="tl">Jan–Feb 2027</td><td class="sh">DFFE</td></tr>
+<tr class="dr"><td class="wbs">1.1.2</td><td class="task"><span class="b b-tl">EIA</span>Biodiversity &amp; ecological field assessment</td><td class="zar">R 359,800</td><td class="eur">€ 17,551</td><td class="tl">Jan–Feb 2027</td><td class="sh">Specialist Consultants</td></tr>
+<tr class="dr"><td class="wbs">1.1.3</td><td class="task"><span class="b b-tl">EIA</span>Reservoir environmental risk review</td><td class="zar">R 231,920</td><td class="eur">€ 11,313</td><td class="tl">Feb–Mar 2027</td><td class="sh">Water Resources Eng.</td></tr>
+<tr class="sg"><td colspan="6">1.2 &nbsp; Water Use Licensing</td></tr>
+<tr class="dr"><td class="wbs">1.2.1</td><td class="task"><span class="b b-aq">Legal</span>Water use permit application (DWS)</td><td class="zar">R 549,000</td><td class="eur">€ 26,780</td><td class="tl">Jan–May 2027</td><td class="sh">DWS / Legal Counsel</td></tr>
+<tr class="dr"><td class="wbs">1.2.2</td><td class="task"><span class="b b-aq">Legal</span>Dept of Water &amp; Sanitation coordination</td><td class="zar">R 144,400</td><td class="eur">€ 7,044</td><td class="tl">Feb–Jun 2027</td><td class="sh">Project Coord.</td></tr>
+<tr class="sg"><td colspan="6">1.3 &nbsp; Grid &amp; Safety Compliance</td></tr>
+<tr class="dr"><td class="wbs">1.3.1</td><td class="task"><span class="b b-aq">NERSA</span>NERSA registration &amp; Eskom grid application</td><td class="zar">R 251,600</td><td class="eur">€ 12,273</td><td class="tl">Feb–Apr 2027</td><td class="sh">NERSA / Eskom</td></tr>
+<tr class="dr"><td class="wbs">1.3.2</td><td class="task"><span class="b b-aq">OHS</span>Electrical safety assessment (SANS 10142)</td><td class="zar">R 153,280</td><td class="eur">€ 7,477</td><td class="tl">Mar–Apr 2027</td><td class="sh">Certified Safety Eng.</td></tr>
+<tr class="dr"><td class="wbs">1.3.3</td><td class="task"><span class="b b-aq">Grid</span>Grid code compliance verification (Eskom 2023)</td><td class="zar">R 262,880</td><td class="eur">€ 12,821</td><td class="tl">Mar–May 2027</td><td class="sh">Eskom Compliance</td></tr>
+<tr class="st"><td colspan="2">Phase 1 Subtotal</td><td class="r"><strong>R 2,504,680</strong></td><td class="r"><strong>€ 122,180</strong></td><td colspan="2"></td></tr>
+
+<!-- ── PHASE 2 ── -->
+<tr class="ph-row" style="--c:#0ea5c9;--bg-c:rgba(14,165,201,0.07)">
+  <td colspan="6">Phase 2 — Site Preparation &amp; Engineering</td>
+</tr>
+<tr class="sg"><td colspan="6">2.1 &nbsp; Site Assessment</td></tr>
+<tr class="dr"><td class="wbs">2.1.1</td><td class="task"><span class="b b-sky">Survey</span>Reservoir depth &amp; bathymetric measurements</td><td class="zar">R 137,600</td><td class="eur">€ 6,713</td><td class="tl">Feb–Mar 2027</td><td class="sh">Hydrographic Survey Co.</td></tr>
+<tr class="dr"><td class="wbs">2.1.2</td><td class="task"><span class="b b-sky">Solar</span>Solar irradiance analysis (SolarGIS / PVsyst)</td><td class="zar">R 114,000</td><td class="eur">€ 5,561</td><td class="tl">Feb–Mar 2027</td><td class="sh">Solar Engineering</td></tr>
+<tr class="sg"><td colspan="6">2.2 &nbsp; Floating System Design</td></tr>
+<tr class="dr"><td class="wbs">2.2.1</td><td class="task"><span class="b b-sky">Marine</span>Anchoring layout &amp; mooring load design (HDPE)</td><td class="zar">R 349,760</td><td class="eur">€ 17,061</td><td class="tl">Feb–Apr 2027</td><td class="sh">Marine Eng.</td></tr>
+<tr class="dr"><td class="wbs">2.2.2</td><td class="task"><span class="b b-sky">Struct.</span>Floating platform stability &amp; FEA analysis</td><td class="zar">R 331,760</td><td class="eur">€ 16,183</td><td class="tl">Mar–Apr 2027</td><td class="sh">Structural Eng.</td></tr>
+<tr class="dr"><td class="wbs">2.2.3</td><td class="task"><span class="b b-sky">Elec.</span>Underwater cable routing design (SANS 10198)</td><td class="zar">R 159,600</td><td class="eur">€ 7,785</td><td class="tl">Mar–Apr 2027</td><td class="sh">Electrical Eng.</td></tr>
+<tr class="sg"><td colspan="6">2.3 &nbsp; Site Preparation</td></tr>
+<tr class="dr"><td class="wbs">2.3.1</td><td class="task"><span class="b b-sl">Labour</span>Material storage area — prefab containers</td><td class="zar">R 130,000</td><td class="eur">€ 6,341</td><td class="tl">Apr 2027</td><td class="sh">Site Logistics</td></tr>
+<tr class="dr"><td class="wbs">2.3.2</td><td class="task"><span class="b b-sl">Labour</span>Security fencing installation — 300 m</td><td class="zar">R 66,800</td><td class="eur">€ 3,259</td><td class="tl">Apr 2027</td><td class="sh">Civil Contractor</td></tr>
+<tr class="dr"><td class="wbs">2.3.3</td><td class="task"><span class="b b-sl">Labour</span>Maintenance jetty &amp; boat ramp construction</td><td class="zar">R 120,300</td><td class="eur">€ 5,869</td><td class="tl">Apr–May 2027</td><td class="sh">Marine Construction</td></tr>
+<tr class="st"><td colspan="2">Phase 2 Subtotal</td><td class="r"><strong>R 1,409,820</strong></td><td class="r"><strong>€ 68,772</strong></td><td colspan="2"></td></tr>
+
+<!-- ── PHASE 3 ── -->
+<tr class="ph-row" style="--c:#0284c7;--bg-c:rgba(2,132,199,0.07)">
+  <td colspan="6">Phase 3 — Solar &amp; Electrical Installation</td>
+</tr>
+<tr class="sg"><td colspan="6">3.1 &nbsp; Solar PV Installation — Crosby, Brixton, Roodeplaat rooftops &amp; Vanderkloof floating array</td></tr>
+<tr class="dr"><td class="wbs">3.1.1</td><td class="task"><span class="b b-aq">Floating</span>Assemble HDPE floating platform sections (1 MW, ~1 150 m²)</td><td class="zar hi">R 3,995,000</td><td class="eur">€ 194,878</td><td class="tl">May–Jul 2027</td><td class="sh">Platform Vendor</td></tr>
+<tr class="dr"><td class="wbs">3.1.2</td><td class="task"><span class="b b-aq">PV</span>Solar mounting structures — 2 222 panels, aluminium rail</td><td class="zar">R 804,000</td><td class="eur">€ 39,220</td><td class="tl">Jun–Jul 2027</td><td class="sh">EPC Contractor</td></tr>
+<tr class="dr"><td class="wbs">3.1.3</td><td class="task"><span class="b b-aq">PV</span>Connect solar panel strings — 2 222 × 450 W @ R3 200 ea.</td><td class="zar hi">R 8,097,800</td><td class="eur">€ 395,013</td><td class="tl">Jun–Aug 2027</td><td class="sh">Panel Supplier</td></tr>
+<tr class="sg"><td colspan="6">3.2 &nbsp; Electrical Infrastructure</td></tr>
+<tr class="dr"><td class="wbs">3.2.1</td><td class="task"><span class="b b-sky">Cable</span>Marine-grade DC floating cables — 2 100 m @ R180/m</td><td class="zar">R 648,000</td><td class="eur">€ 31,610</td><td class="tl">Jul 2027</td><td class="sh">Cable Supplier</td></tr>
+<tr class="dr"><td class="wbs">3.2.2</td><td class="task"><span class="b b-sky">Inverter</span>4 × 250 kW string inverters &amp; switchgear (Huawei SUN2000)</td><td class="zar mid">R 1,462,000</td><td class="eur">€ 71,317</td><td class="tl">Jul–Aug 2027</td><td class="sh">Inverter OEM</td></tr>
+<tr class="dr"><td class="wbs">3.2.3</td><td class="task"><span class="b b-sky">Safety</span>Earthing &amp; lightning protection (SANS 62305)</td><td class="zar">R 252,500</td><td class="eur">€ 12,317</td><td class="tl">Aug 2027</td><td class="sh">Electrical Installer</td></tr>
+<tr class="sg"><td colspan="6">3.3 &nbsp; Battery Energy Storage System (BESS) — Eikenhof Reservoir Container Units</td></tr>
+<tr class="dr"><td class="wbs">3.3.1</td><td class="task"><span class="b b-tl">BESS</span>Concrete plinth foundation &amp; cable trenching (12 × 6 m)</td><td class="zar">R 372,400</td><td class="eur">€ 18,166</td><td class="tl">Jun–Jul 2027</td><td class="sh">Civil Contractor</td></tr>
+<tr class="dr"><td class="wbs">3.3.2</td><td class="task"><span class="b b-tl">BESS</span>1.25 MWh LFP BESS — BYD/CATL units incl. BMS &amp; EMS</td><td class="zar hi">R 4,932,000</td><td class="eur">€ 240,585</td><td class="tl">Jul–Sep 2027</td><td class="sh">BESS OEM</td></tr>
+<tr class="dr"><td class="wbs">3.3.3</td><td class="task"><span class="b b-tl">BESS</span>Battery integration &amp; protection relay commissioning</td><td class="zar">R 240,760</td><td class="eur">€ 11,743</td><td class="tl">Aug–Sep 2027</td><td class="sh">Electrical Installer</td></tr>
+<tr class="st"><td colspan="2">Phase 3 Subtotal</td><td class="r"><strong>R 20,804,460</strong></td><td class="r"><strong>€ 1,014,852</strong></td><td colspan="2"></td></tr>
+
+<!-- ── PHASE 4 ── -->
+<tr class="ph-row" style="--c:#38bdf8;--bg-c:rgba(56,189,248,0.07)">
+  <td colspan="6">Phase 4 — Monitoring, Testing &amp; Operations</td>
+</tr>
+<tr class="sg"><td colspan="6">4.1 &nbsp; Monitoring Systems</td></tr>
+<tr class="dr"><td class="wbs">4.1.1</td><td class="task"><span class="b b-sky">SCADA</span>SCADA/Ignition platform &amp; IoT sensor installation</td><td class="zar">R 664,000</td><td class="eur">€ 32,390</td><td class="tl">Aug–Sep 2027</td><td class="sh">SCADA Integration</td></tr>
+<tr class="dr"><td class="wbs">4.1.2</td><td class="task"><span class="b b-sky">SCADA</span>PowerBI performance dashboards + API integration</td><td class="zar">R 353,240</td><td class="eur">€ 17,231</td><td class="tl">Sep–Oct 2027</td><td class="sh">BI Developer</td></tr>
+<tr class="sg"><td colspan="6">4.2 &nbsp; Testing &amp; Commissioning</td></tr>
+<tr class="dr"><td class="wbs">4.2.1</td><td class="task"><span class="b b-aq">Test</span>Electrical continuity &amp; insulation testing (Megger)</td><td class="zar">R 226,640</td><td class="eur">€ 11,050</td><td class="tl">Sep 2027</td><td class="sh">Certified Tester</td></tr>
+<tr class="dr"><td class="wbs">4.2.2</td><td class="task"><span class="b b-aq">Marine</span>Floating platform stability &amp; dive inspection (SAMSA)</td><td class="zar">R 298,560</td><td class="eur">€ 14,564</td><td class="tl">Sep 2027</td><td class="sh">Dive Services / SAMSA</td></tr>
+<tr class="dr"><td class="wbs">4.2.3</td><td class="task"><span class="b b-aq">Grid</span>Grid synchronization &amp; anti-islanding tests (Eskom SSM)</td><td class="zar">R 515,760</td><td class="eur">€ 25,161</td><td class="tl">Sep–Oct 2027</td><td class="sh">Eskom SSM</td></tr>
+<tr class="sg"><td colspan="6">4.3 &nbsp; Operations &amp; Maintenance</td></tr>
+<tr class="dr"><td class="wbs">4.3.1</td><td class="task"><span class="b b-tl">O&amp;M</span>Robotic panel cleaning evaluation &amp; SOP drafting</td><td class="zar">R 145,800</td><td class="eur">€ 7,112</td><td class="tl">Oct 2027</td><td class="sh">O&amp;M Consultant</td></tr>
+<tr class="dr"><td class="wbs">4.3.2</td><td class="task"><span class="b b-tl">O&amp;M</span>Community labour ops training — 10 trainees (MERSETA)</td><td class="zar">R 340,400</td><td class="eur">€ 16,605</td><td class="tl">Sep–Oct 2027</td><td class="sh">Training Provider</td></tr>
+<tr class="dr"><td class="wbs">4.3.3</td><td class="task"><span class="b b-tl">O&amp;M</span>As-built drawings, O&amp;M manuals &amp; project handover</td><td class="zar">R 239,240</td><td class="eur">€ 11,672</td><td class="tl">Oct–Nov 2027</td><td class="sh">Doc. Specialist</td></tr>
+<tr class="st"><td colspan="2">Phase 4 Subtotal</td><td class="r"><strong>R 2,783,640</strong></td><td class="r"><strong>€ 135,787</strong></td><td colspan="2"></td></tr>
+
+<!-- ── PM + CONTINGENCY ── -->
+<tr class="ph-row" style="--c:#64748b;--bg-c:rgba(100,116,139,0.06)">
+  <td colspan="6">Project Management &amp; Contingency Reserve</td>
+</tr>
+<tr class="dr"><td class="wbs">PM</td><td class="task"><span class="b b-sl">PM</span>Senior PM — 70 wks × 40 hrs @ R750/hr, site visits &amp; reporting</td><td class="zar mid">R 2,395,000</td><td class="eur">€ 116,829</td><td class="tl">Jan 2027–Apr 2028</td><td class="sh">Project Manager</td></tr>
+<tr class="dr"><td class="wbs">CONT</td><td class="task"><span class="b b-sl">Risk</span>10% contingency reserve on direct costs (PFMA policy)</td><td class="zar mid">R 2,989,760</td><td class="eur">€ 145,842</td><td class="tl">Allocation</td><td class="sh">Risk Management</td></tr>
+<tr class="st"><td colspan="2">PM + Contingency Subtotal</td><td class="r"><strong>R 5,384,760</strong></td><td class="r"><strong>€ 262,671</strong></td><td colspan="2"></td></tr>
+
+<!-- GRAND TOTAL -->
+<tr class="gt">
+  <td colspan="2">Grand Total — All Phases (incl. Contingency &amp; Project Management)</td>
+  <td class="r">R 32,887,360</td>
+  <td class="er">€ 1,604,261</td>
+  <td colspan="2" style="font-size:11px;color:var(--text-mid);font-weight:400;">Rate: 1 EUR = R20.50 · May 2026</td>
+</tr>
+
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>© 2027 Rand Water · Floating Solar Energy Project · Budget Reference v1.0</div>
+  <div>
+    <a href="https://www.dffe.gov.za" target="_blank" rel="noopener">DFFE</a> ·
+    <a href="https://www.nersa.org.za" target="_blank" rel="noopener">NERSA</a> ·
+    <a href="https://www.eskom.co.za" target="_blank" rel="noopener">Eskom</a> ·
+    <a href="https://www.dws.gov.za" target="_blank" rel="noopener">DWS</a> ·
+    <a href="https://www.randwater.co.za" target="_blank" rel="noopener">Rand Water</a>
+  </div>
+</div>
+
+</body>
+</html>
