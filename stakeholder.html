@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rand Water – Stakeholder Analysis & Communication Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:      #f4f7f2;
+  --paper-hi:   #ffffff;
+  --paper-dark: #e8efe5;
+  --sage:       #4a7c59;
+  --sage-mid:   #5d9970;
+  --sage-light: rgba(74,124,89,0.12);
+  --sage-xlight:rgba(74,124,89,0.06);
+  --sage-border:rgba(74,124,89,0.20);
+  --moss:       #2d5a3d;
+  --fern:       #6aaa7e;
+  --text:       #1c2e22;
+  --text-mid:   #4a6652;
+  --text-lo:    #8aaa94;
+  --border:     rgba(74,124,89,0.15);
+  --shadow:     0 1px 12px rgba(45,90,61,0.08);
+  --r:          10px;
+  --r-sm:       6px;
+}
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 36px 28px 60px;
+  min-width: 320px;
+}
+
+/* paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── SOURCE BANNER ── */
+.source-banner {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(74,124,89,0.08) 0%, rgba(106,170,126,0.06) 100%);
+  border: 1px solid var(--sage-border);
+  border-radius: var(--r-sm);
+  padding: 10px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.source-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-lo);
+  font-weight: 500;
+}
+.source-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--sage);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage);
+  transition: color 0.2s;
+}
+.source-link:hover {
+  color: var(--sage-mid);
+  border-bottom-color: var(--sage-mid);
+}
+
+/* ── HEADER ── */
+.header {
+  position: relative; z-index: 1;
+  border-left: 3px solid var(--sage);
+  padding: 0 0 0 20px;
+  margin-bottom: 32px;
+}
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sage-mid);
+  margin-bottom: 6px;
+}
+.header h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 600;
+  color: var(--moss);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.header-sub {
+  font-size: 13px;
+  color: var(--text-mid);
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+.meta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+.chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-mid);
+  background: var(--paper-hi);
+  border: 1px solid var(--sage-border);
+  border-radius: 100px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.chip b { color: var(--sage); }
+
+/* ── SECTION TITLE ── */
+.sec {
+  position: relative; z-index: 1;
+  margin: 32px 0 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.sec-title {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--moss);
+}
+.sec-line { flex: 1; height: 1px; background: var(--border); }
+.sec-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-lo);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── INTRO PARAGRAPH ── */
+.intro {
+  position: relative; z-index: 1;
+  background: var(--paper-hi);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--fern);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-family: 'Lora', serif;
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+.intro strong { color: var(--moss); font-weight: 600; }
+
+/* ── MATRIX GRID ── */
+.matrix-wrap {
+  position: relative; z-index: 1;
+  background: var(--paper-hi);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  min-height: 380px;
+}
+.quad {
+  background: var(--paper-hi);
+  padding: 20px;
+  position: relative;
+}
+.quad-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  margin-bottom: 10px;
+}
+.quad-strategy {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--moss);
+  margin-bottom: 4px;
+}
+.quad-desc {
+  font-size: 11.5px;
+  color: var(--text-mid);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.quad-items { display: flex; flex-direction: column; gap: 5px; }
+.qitem {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text);
+}
+.qitem-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+  background: var(--sage);
+}
+.qitem-name { font-weight: 500; }
+.qitem-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--text-lo);
+  background: var(--sage-xlight);
+  border: 1px solid var(--sage-border);
+  border-radius: 3px;
+  padding: 0 4px;
+  margin-left: 4px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+/* axis labels */
+.matrix-yaxis {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  padding: 12px 8px;
+  background: var(--sage-xlight);
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.matrix-outer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.matrix-xwrap {
+  display: flex;
+  flex-direction: column;
+}
+.matrix-xaxis {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  text-align: center;
+  padding: 8px;
+  background: var(--sage-xlight);
+  border-top: 1px solid var(--border);
+}
+.matrix-xaxis-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--sage-xlight);
+  border-top: 1px solid var(--border);
+}
+.xal {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  text-align: center;
+  padding: 4px;
+  letter-spacing: 0.08em;
+}
+/* quad accent corners */
+.q-tl { border-bottom: 2px solid rgba(74,124,89,0.15); border-right: 2px solid rgba(74,124,89,0.15); }
+.q-tr { border-bottom: 2px solid rgba(74,124,89,0.3);  background: rgba(74,124,89,0.03); }
+.q-bl { background: rgba(74,124,89,0.03); }
+.q-br { }
+
+/* ── LEGEND ── */
+.legend-row {
+  position: relative; z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--paper-hi);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 5px 11px;
+  font-size: 12px;
+}
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.leg-label { color: var(--text-mid); }
+.leg-label b { color: var(--text); font-weight: 600; }
+
+/* ── TABLE ── */
+.tbl-wrap {
+  position: relative; z-index: 1;
+  background: var(--paper-hi);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.tbl-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px 11px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tbl-bar-title {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--moss);
+}
+.tbl-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: var(--sage);
+  background: var(--sage-light);
+  border: 1px solid var(--sage-border);
+  border-radius: 100px;
+  padding: 2px 9px;
+}
+.tbl-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
+thead th {
+  padding: 10px 13px;
+  text-align: left;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  background: var(--paper-dark);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* group rows */
+tr.grp td {
+  padding: 8px 13px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--c, var(--sage));
+  background: var(--bg-c, var(--sage-xlight));
+  border-top: 1px solid var(--border);
+}
+
+/* data rows */
+tr.dr td {
+  padding: 11px 13px;
+  border-bottom: 1px solid rgba(74,124,89,0.07);
+  vertical-align: top;
+  font-size: 13px;
+  color: var(--text);
+}
+tr.dr:hover td { background: rgba(74,124,89,0.04); }
+tr.dr:last-of-type td { border-bottom: none; }
+
+td.num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-lo);
+  white-space: nowrap;
+  width: 30px;
+}
+td.name { font-weight: 500; min-width: 170px; }
+td.need { font-size: 12px; color: var(--text-mid); min-width: 200px; line-height: 1.45; }
+td.impl { font-size: 11.5px; color: var(--text-mid); min-width: 210px; line-height: 1.45; font-style: italic; }
+td.ctr { text-align: center; }
+
+/* badges */
+.b {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  border-radius: 4px;
+  padding: 1px 5px;
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+.b-int { background: rgba(74,124,89,0.1);  color: #2d5a3d; border: 1px solid rgba(74,124,89,0.2); }
+.b-ext { background: rgba(45,90,61,0.07);  color: #4a7c59; border: 1px solid rgba(74,124,89,0.15); }
+
+.view-badge {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  border-radius: 100px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.v-adv  { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.v-sup  { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+.v-neu  { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+.v-cri  { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+.pri-badge {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.p-crit { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.p-high { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.p-med  { background: rgba(74,124,89,0.1); color: #2d5a3d; border: 1px solid rgba(74,124,89,0.2); }
+.p-low  { background: #f3f4f6; color: #4b5563; border: 1px solid #d1d5db; }
+
+.strat {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--sage);
+  background: var(--sage-xlight);
+  border: 1px solid var(--sage-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+.freq {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-lo);
+  white-space: nowrap;
+}
+
+/* ── JUSTIFICATION CARDS ── */
+.just-grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.just-card {
+  background: var(--paper-hi);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--c, var(--sage));
+  border-radius: var(--r);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.just-quad {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c, var(--sage));
+  margin-bottom: 5px;
+}
+.just-title {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--moss);
+  margin-bottom: 6px;
+}
+.just-body {
+  font-size: 12.5px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  font-family: 'Lora', serif;
+  font-style: italic;
+}
+.just-body b { font-style: normal; color: var(--moss); font-weight: 600; }
+
+/* ── FOOTER ── */
+.footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-lo);
+}
+.footer a { color: var(--sage); text-decoration: none; }
+
+@media (max-width: 600px) {
+  body { padding: 20px 14px 40px; }
+  .matrix-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4,auto); }
+  .matrix-outer { grid-template-columns: 1fr; }
+  .matrix-yaxis { writing-mode: horizontal-tb; transform: none; padding: 8px 14px; border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<!-- SOURCE BANNER -->
+<div class="source-banner">
+  <span class="source-label">👥 Stakeholder Register</span>
+  <a href="https://ktuedu-my.sharepoint.com/:x:/g/personal/vytbar4_ktu_lt/IQB7vdBzTPPARrgLXwZKSADSAXwOtgDvkf5uyoPk-AdecLk?e=Tu9fWR" target="_blank" rel="noopener" class="source-link">View Source Data</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="eyebrow">Rand Water · Floating Solar Energy Project</div>
+  <h1>Stakeholder Analysis &amp;<br>Communication Plan</h1>
+  <div class="header-sub">Vanderkloof Dam &amp; Gauteng Reservoirs — 21 Identified Stakeholders</div>
+  <div class="meta-chips">
+    <div class="chip">Project Start <b>Jan 2027</b></div>
+    <div class="chip">Close-out <b>Dec 2028</b></div>
+    <div class="chip">Stakeholders <b>21</b></div>
+    <div class="chip">Internal <b>4</b></div>
+    <div class="chip">External <b>17</b></div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="sec"><span class="sec-title">About This Analysis</span><span class="sec-line"></span></div>
+<div class="intro">
+  This stakeholder register was compiled in accordance with <strong>PMBOK 7th Edition</strong> principles and the <strong>Rand Water Engineering PMO</strong> governance framework. Each stakeholder was evaluated against two axes — <strong>power</strong> (ability to influence project outcomes) and <strong>interest</strong> (degree to which they are affected by the project) — and assigned to one of four engagement quadrants. The resulting communication strategies are proportionate, targeted, and designed to protect the project's regulatory standing, community licence to operate, and financial integrity throughout the 70-week execution window.
+</div>
+
+<!-- MATRIX -->
+<div class="sec"><span class="sec-title">Power / Interest Matrix</span><span class="sec-line"></span><span class="sec-note">Mendelow's Framework</span></div>
+
+<div class="matrix-wrap">
+  <div class="matrix-outer">
+    <div class="matrix-yaxis">Power (Influence)</div>
+    <div class="matrix-xwrap">
+      <div class="matrix-grid">
+
+        <!-- TOP-LEFT: High Power / Low Interest -->
+        <div class="quad q-tl">
+          <div class="quad-label">High Power · Low Interest</div>
+          <div class="quad-strategy">Keep Satisfied</div>
+          <div class="quad-desc">They can block the project. Keep them informed of progress and risks without over-involving them in day-to-day decisions.</div>
+          <div class="quad-items">
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Funding Institutions / Investors</span><span class="qitem-type">External</span></div></div>
+          </div>
+        </div>
+
+        <!-- TOP-RIGHT: High Power / High Interest -->
+        <div class="quad q-tr">
+          <div class="quad-label">High Power · High Interest</div>
+          <div class="quad-strategy">Manage Closely</div>
+          <div class="quad-desc">The most critical group. Actively engage, consult, and collaborate. Their support is essential for project success.</div>
+          <div class="quad-items">
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Rand Water Board &amp; Executives</span><span class="qitem-type">Internal</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">NERSA</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Engineering PMO</span><span class="qitem-type">Internal</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Eskom (National Utility)</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Eskom Transmission Division</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Eskom Distribution (Gauteng)</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Dept. of Electricity &amp; Energy</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">Dept. of Water &amp; Sanitation</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">National Treasury</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot"></div><div><span class="qitem-name">South African Government</span><span class="qitem-type">External</span></div></div>
+          </div>
+        </div>
+
+        <!-- BOTTOM-LEFT: Low Power / Low Interest -->
+        <div class="quad q-bl">
+          <div class="quad-label">Low Power · Low Interest</div>
+          <div class="quad-strategy">Monitor</div>
+          <div class="quad-desc">Minimal engagement. Provide occasional updates; watch for changes in their position or interest level.</div>
+          <div class="quad-items">
+            <div class="qitem"><div class="qitem-dot" style="background:#8aaa94"></div><div><span class="qitem-name">Equipment Suppliers</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#8aaa94"></div><div><span class="qitem-name">Public Housing Associations</span><span class="qitem-type">External</span></div></div>
+          </div>
+        </div>
+
+        <!-- BOTTOM-RIGHT: Low Power / High Interest -->
+        <div class="quad q-br">
+          <div class="quad-label">Low Power · High Interest</div>
+          <div class="quad-strategy">Keep Informed</div>
+          <div class="quad-desc">They care deeply but have limited direct influence. Regular communication builds goodwill and prevents opposition.</div>
+          <div class="quad-items">
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Rand Water Operations Staff</span><span class="qitem-type">Internal</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Local Communities &amp; NGOs</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Engineers (Field)</span><span class="qitem-type">Internal</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Residents / Consumers</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Manufacturers (commercial)</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Reporters &amp; Journalists</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Eskom System Operator</span><span class="qitem-type">External</span></div></div>
+            <div class="qitem"><div class="qitem-dot" style="background:#6aaa7e"></div><div><span class="qitem-name">Insurance Companies</span><span class="qitem-type">External</span></div></div>
+          </div>
+        </div>
+
+      </div><!-- matrix-grid -->
+      <div class="matrix-xaxis-labels">
+        <div class="xal">← Low Interest</div>
+        <div class="xal">High Interest →</div>
+      </div>
+      <div class="matrix-xaxis">Interest (Degree Affected)</div>
+    </div><!-- matrix-xwrap -->
+  </div><!-- matrix-outer -->
+</div><!-- matrix-wrap -->
+
+<!-- STRATEGY JUSTIFICATIONS -->
+<div class="sec"><span class="sec-title">Strategy Justifications</span><span class="sec-line"></span><span class="sec-note">Why each quadrant</span></div>
+
+<div class="just-grid">
+  <div class="just-card" style="--c:#2d5a3d">
+    <div class="just-quad">Manage Closely — High Power / High Interest</div>
+    <div class="just-title">Active Collaboration</div>
+    <div class="just-body">These stakeholders hold <b>regulatory, financial, or operational authority</b> over the project and stand to gain or lose significantly from its outcome. NERSA can revoke a licence; National Treasury can freeze funds; Eskom can deny grid access. Each of these outcomes would terminate the project. Daily or bi-weekly touchpoints, written confirmation of all approvals, and escalation procedures are essential to maintain their support and pre-empt surprises.</div>
+  </div>
+  <div class="just-card" style="--c:#4a7c59">
+    <div class="just-quad">Keep Satisfied — High Power / Low Interest</div>
+    <div class="just-title">Proactive Reporting</div>
+    <div class="just-body">Funding institutions and investors hold financial power but are not operationally involved. Their primary concern is <b>ESG compliance, loan repayment security, and risk visibility</b>. Monthly financial reports and transparent communication about delays prevent disengagement or funding withdrawal. Over-involving them in technical decisions would be counterproductive; they need confidence, not complexity.</div>
+  </div>
+  <div class="just-card" style="--c:#6aaa7e">
+    <div class="just-quad">Keep Informed — Low Power / High Interest</div>
+    <div class="just-title">Transparent Communication</div>
+    <div class="just-body">Operations staff, local communities, and field engineers are directly affected by day-to-day project activity. Though they hold limited formal power, <b>their collective resistance can create delays</b> through grievances, safety incidents, or negative media coverage. Regular briefings, a community feedback channel, and onboarding procedures convert potentially resistant stakeholders into advocates and protect the project's social licence.</div>
+  </div>
+  <div class="just-card" style="--c:#8aaa94">
+    <div class="just-quad">Monitor — Low Power / Low Interest</div>
+    <div class="just-title">Lightweight Oversight</div>
+    <div class="just-body">Equipment suppliers and public housing associations have a peripheral relationship with the project. <b>Disproportionate engagement would waste project manager bandwidth.</b> Quarterly short-form updates and prompt payment procedures are sufficient. However, this group should be re-evaluated at each phase gate — a supplier dispute or community association concern can escalate their interest level rapidly if left unaddressed.</div>
+  </div>
+</div>
+
+<!-- TABLE -->
+<div class="sec"><span class="sec-title">Full Stakeholder Register</span><span class="sec-line"></span><span class="sec-note">All 21 stakeholders</span></div>
+
+<div class="tbl-wrap">
+  <div class="tbl-bar">
+    <span class="tbl-bar-title">Communication Plan — All Stakeholders</span>
+    <span class="tbl-count">21 STAKEHOLDERS · ZAR PROJECT</span>
+  </div>
+  <div class="tbl-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Stakeholder</th>
+        <th>Type</th>
+        <th>Need / Requirement</th>
+        <th>View</th>
+        <th>Priority</th>
+        <th>Strategy</th>
+        <th>Implementation</th>
+        <th>Freq.</th>
+      </tr>
+    </thead>
+    <tbody>
+
+<!-- Manage Closely -->
+<tr class="grp" style="--c:#2d5a3d;--bg-c:rgba(45,90,61,0.07)"><td colspan="9">Manage Closely — High Power / High Interest</td></tr>
+<tr class="dr"><td class="num">01</td><td class="name">Rand Water Board &amp; Executives</td><td><span class="b b-int">Internal</span></td><td class="need">Financial ROI, strategic goals, and "Net Zero" mandates.</td><td><span class="view-badge v-adv">Advocate</span></td><td><span class="pri-badge p-crit">Critical</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">LinkedIn follow-up, monthly status meetings, expert guidance requests from executives.</td><td class="freq">Monthly</td></tr>
+<tr class="dr"><td class="num">02</td><td class="name">NERSA</td><td><span class="b b-ext">External</span></td><td class="need">Regulatory compliance, grid safety, and licensing (WBS 4.4).</td><td><span class="view-badge v-adv">Advocate</span></td><td><span class="pri-badge p-crit">Critical</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">Request permit checklists, written change notifications, and invite to site feasibility surveys.</td><td class="freq">Bi-Weekly</td></tr>
+<tr class="dr"><td class="num">03</td><td class="name">Engineering PMO</td><td><span class="b b-int">Internal</span></td><td class="need">Technical execution, timeline, and quality control.</td><td><span class="view-badge v-sup">Supporter</span></td><td><span class="pri-badge p-high">High</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">Daily coordination meetings, strict procedures, immediate escalation of technical issues.</td><td class="freq">Daily</td></tr>
+<tr class="dr"><td class="num">04</td><td class="name">Eskom (National Utility)</td><td><span class="b b-ext">External</span></td><td class="need">Grid stability and "feed-in" agreements.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-high">High</span></td><td><span class="strat">Keep Satisfied</span></td><td class="impl">Accurate energy forecasts, compliance reports, advance coordination of grid integration testing.</td><td class="freq">Quarterly</td></tr>
+<tr class="dr"><td class="num">14</td><td class="name">Eskom Transmission Division</td><td><span class="b b-ext">External</span></td><td class="need">Strict Grid Code adherence; no voltage dips or harmonics on 132–400 kV backbone.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">Harmonic &amp; voltage stability studies, technical reviews, simulation results before commissioning.</td><td class="freq">Monthly</td></tr>
+<tr class="dr"><td class="num">15</td><td class="name">Eskom Distribution (Gauteng)</td><td><span class="b b-ext">External</span></td><td class="need">Stabilise 11 kV / 88 kV lines at Eikenhof &amp; Commando stations; coordinate BESS discharge.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">Joint planning meetings, operational forecasts shared, dedicated communication channel during ops.</td><td class="freq">Monthly</td></tr>
+<tr class="dr"><td class="num">19</td><td class="name">Dept. of Electricity &amp; Energy</td><td><span class="b b-ext">External</span></td><td class="need">Compliance with national renewable energy policy and licensing requirements.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-high">High</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">Regular compliance docs, formal communication records, written confirmation for all approvals.</td><td class="freq">Bi-Weekly</td></tr>
+<tr class="dr"><td class="num">20</td><td class="name">Dept. of Water &amp; Sanitation</td><td><span class="b b-ext">External</span></td><td class="need">Reservoir water quality protection, EIA compliance, floating solar approval.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-high">High</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">Water quality monitoring, environmental assessment reports, site inspection invitations.</td><td class="freq">Monthly</td></tr>
+<tr class="dr"><td class="num">17</td><td class="name">South African Government</td><td><span class="b b-ext">External</span></td><td class="need">Project approval; written sign-off from at least 2 Lenasia district representatives.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-high">High</span></td><td><span class="strat">Manage Closely</span></td><td class="impl">All enquiries routed to line manager; minimum 2-working-day response policy maintained.</td><td class="freq">Bi-Weekly</td></tr>
+<tr class="dr"><td class="num">21</td><td class="name">National Treasury</td><td><span class="b b-ext">External</span></td><td class="need">Financial transparency, procurement compliance, long-term economic sustainability.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-high">High</span></td><td><span class="strat">Keep Satisfied</span></td><td class="impl">Transparent financial reports, full procurement records, auditable expenditure documentation.</td><td class="freq">Quarterly</td></tr>
+
+<!-- Keep Satisfied -->
+<tr class="grp" style="--c:#4a7c59;--bg-c:rgba(74,124,89,0.06)"><td colspan="9">Keep Satisfied — High Power / Low Interest</td></tr>
+<tr class="dr"><td class="num">05</td><td class="name">Funding Institutions / Investors</td><td><span class="b b-ext">External</span></td><td class="need">Loan repayment, risk management, and ESG compliance.</td><td><span class="view-badge v-sup">Supporter</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Keep Satisfied</span></td><td class="impl">Monthly financial &amp; performance reports, risk mitigation demonstrations, transparent delay comms.</td><td class="freq">Monthly</td></tr>
+<tr class="dr"><td class="num">16</td><td class="name">Eskom System Operator</td><td><span class="b b-ext">External</span></td><td class="need">Accurate weather-yield forecasting to manage solar intermittency and hydro ramp-up.</td><td><span class="view-badge v-adv">Advocate</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Keep Satisfied</span></td><td class="impl">Provide forecasting models, share operational data, coordinate dispatch planning meetings.</td><td class="freq">Monthly</td></tr>
+
+<!-- Keep Informed -->
+<tr class="grp" style="--c:#5d9970;--bg-c:rgba(93,153,112,0.06)"><td colspan="9">Keep Informed — Low Power / High Interest</td></tr>
+<tr class="dr"><td class="num">06</td><td class="name">Rand Water Operations Staff</td><td><span class="b b-int">Internal</span></td><td class="need">Day-to-day work changes, new O&amp;M protocols (WBS 2.1).</td><td><span class="view-badge v-adv">Advocate</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Keep Informed</span></td><td class="impl">Distribute maintenance procedures, weekly briefings, open feedback channel for operational concerns.</td><td class="freq">Weekly</td></tr>
+<tr class="dr"><td class="num">07</td><td class="name">Local Communities &amp; NGOs</td><td><span class="b b-ext">External</span></td><td class="need">Environmental impact statements, biodiversity maintenance (WBS 2.3), job opportunities.</td><td><span class="view-badge v-sup">Supporter</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Keep Informed</span></td><td class="impl">Publish progress updates, establish structured community feedback process, biodiversity briefings.</td><td class="freq">Quarterly</td></tr>
+<tr class="dr"><td class="num">10</td><td class="name">Engineers (Field)</td><td><span class="b b-int">Internal</span></td><td class="need">Tools, PPE, safety assurance, and clear work descriptions.</td><td><span class="view-badge v-neu">Neutral</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Dialogue</span></td><td class="impl">Onboarding procedure, responsibility briefings, signed training sign-offs with line managers.</td><td class="freq">Daily</td></tr>
+<tr class="dr"><td class="num">11</td><td class="name">Residents — electricity &amp; water consumers</td><td><span class="b b-ext">External</span></td><td class="need">Promise of the benefits this project delivers to their community.</td><td><span class="view-badge v-neu">Neutral</span></td><td><span class="pri-badge p-low">Low</span></td><td><span class="strat">Dialogue</span></td><td class="impl">Social media updates, advocacy campaigns, encourage citizen advocacy for the project.</td><td class="freq">Monthly</td></tr>
+<tr class="dr"><td class="num">12</td><td class="name">Manufacturers — commercial consumers</td><td><span class="b b-ext">External</span></td><td class="need">Potential access to surplus solar energy once operational (post-Sep 2028).</td><td><span class="view-badge v-sup">Supporter</span></td><td><span class="pri-badge p-low">Low</span></td><td><span class="strat">Dialogue</span></td><td class="impl">Track energy surplus from Oct 2028; initiate energy transfer project scoping if regular surplus confirmed.</td><td class="freq">Quarterly</td></tr>
+<tr class="dr"><td class="num">13</td><td class="name">Insurance Companies</td><td><span class="b b-ext">External</span></td><td class="need">Safe, accident-free working environment and timely incident reporting.</td><td><span class="view-badge v-cri">Critic</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Inform</span></td><td class="impl">Mature risk breakdown, respect insurance agreements, develop efficient accident reporting procedures.</td><td class="freq">Monthly</td></tr>
+<tr class="dr"><td class="num">18</td><td class="name">Reporters &amp; Journalists</td><td><span class="b b-ext">External</span></td><td class="need">Objective, polite communication; positive project narrative and progress updates.</td><td><span class="view-badge v-neu">Neutral</span></td><td><span class="pri-badge p-med">Medium</span></td><td><span class="strat">Dialogue</span></td><td class="impl">Invite for live coverage milestones, raise public awareness, maintain professional press relations.</td><td class="freq">Quarterly</td></tr>
+
+<!-- Monitor -->
+<tr class="grp" style="--c:#8aaa94;--bg-c:rgba(138,170,148,0.07)"><td colspan="9">Monitor — Low Power / Low Interest</td></tr>
+<tr class="dr"><td class="num">08</td><td class="name">Equipment Suppliers</td><td><span class="b b-ext">External</span></td><td class="need">Timely payment and clear technical specifications.</td><td><span class="view-badge v-adv">Advocate</span></td><td><span class="pri-badge p-low">Low</span></td><td><span class="strat">Monitor</span></td><td class="impl">Share specs early, confirm delivery schedules regularly, maintain prompt payment procedures.</td><td class="freq">Bi-Weekly</td></tr>
+<tr class="dr"><td class="num">09</td><td class="name">Public Housing Associations</td><td><span class="b b-ext">External</span></td><td class="need">Periodic updates on crime, unexpected events, and project progress near residential areas.</td><td><span class="view-badge v-neu">Neutral</span></td><td><span class="pri-badge p-low">Low</span></td><td><span class="strat">Support</span></td><td class="impl">Quarterly or bi-annual short-form progress report with key project highlights.</td><td class="freq">Quarterly</td></tr>
+
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>© 2027 Rand Water · Stakeholder Register v1.0 · Floating Solar Energy Project</div>
+  <div>
+    <a href="index.html" target="_self">Budget</a> ·
+    <a href="https://www.randwater.co.za" target="_blank" rel="noopener">Rand Water</a> ·
+    <a href="https://www.nersa.org.za" target="_blank" rel="noopener">NERSA</a> ·
+    <a href="https://www.eskom.co.za" target="_blank" rel="noopener">Eskom</a> ·
+    <a href="https://www.dws.gov.za" target="_blank" rel="noopener">DWS</a> ·
+    <a href="https://www.dffe.gov.za" target="_blank" rel="noopener">DFFE</a>
+  </div>
+</div>
+
+</body>
+</html>
